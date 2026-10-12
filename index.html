@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101512">
+  <meta name="description" content="Crie propostas e orçamentos profissionais com ajuda da IA.">
+  <title>OrçaPro IA — Gerador de Orçamentos</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="OrçaPro IA início"><span class="brand-mark">O<span>+</span></span><span>ORÇA<span class="green">PRO</span><small>ORÇAMENTOS INTELIGENTES</small></span></a>
+    <button id="installBtn" class="button button-ghost install-button" type="button"><span>↧</span> Baixar / Instalar App</button>
+  </header>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow"><span class="pulse"></span> PROPOSTAS COM INTELIGÊNCIA ARTIFICIAL</div>
+      <h1>Seu próximo orçamento.<br><span>Mais profissional.</span></h1>
+      <p>Transforme detalhes do seu serviço em uma proposta clara, elegante e pronta para enviar ao cliente.</p>
+      <div class="trust-row"><span>✦ Texto profissional</span><span>✦ Pronto para WhatsApp</span><span>✦ PDF em segundos</span></div>
+    </section>
+
+    <section class="workspace">
+      <div class="panel form-panel">
+        <div class="panel-heading"><div><span class="step">01</span><h2>Dados do orçamento</h2></div><span class="optional-note">* Campos essenciais</span></div>
+        <form id="quoteForm">
+          <label for="client">Nome do cliente <span>*</span></label>
+          <input id="client" name="client" placeholder="Ex.: João Silva" autocomplete="name" required maxlength="120">
+          <label for="service">Serviço ou produto <span>*</span></label>
+          <input id="service" name="service" placeholder="Ex.: Venda e instalação de câmera Wi-Fi" required maxlength="180">
+          <label for="details">Descrição e detalhes <small>Opcional</small></label>
+          <textarea id="details" name="details" rows="4" placeholder="Principais recursos, etapas do serviço, materiais inclusos..." maxlength="2500"></textarea>
+          <div class="field-grid">
+            <div><label for="price">Valor total (R$) <span>*</span></label><input id="price" name="price" placeholder="370,00" inputmode="decimal" required maxlength="30"></div>
+            <div><label for="payment">Condições de pagamento <small>Opcional</small></label><input id="payment" name="payment" placeholder="Pix ou até 12x no cartão" maxlength="250"></div>
+          </div>
+          <label for="warranty">Prazo e garantia <small>Opcional</small></label>
+          <input id="warranty" name="warranty" placeholder="Ex.: instalação em 24h; garantia de 1 ano" maxlength="300">
+          <div class="form-foot"><span class="secure-note">♢ Seus dados são usados apenas para gerar esta proposta.</span><button class="button button-primary generate-button" type="submit"><span>✦</span> Gerar orçamento <span class="arrow">→</span></button></div>
+          <p id="formError" class="error" role="alert" hidden></p>
+        </form>
+      </div>
+
+      <div class="panel output-panel">
+        <div class="panel-heading"><div><span class="step">02</span><h2>Pré-visualização</h2></div><span class="live-tag"><span></span> DOCUMENTO</span></div>
+        <div id="emptyState" class="empty-state">
+          <div class="document-icon"><span>✧</span><i></i><i></i><i></i></div>
+          <h3>Sua proposta começa aqui</h3>
+          <p>Preencha os dados ao lado e clique em <b>Gerar orçamento</b>. A IA vai preparar uma proposta pronta para compartilhar.</p>
+        </div>
+        <div id="loadingState" class="loading-state" hidden>
+          <div class="spinner"></div><h3>Preparando sua proposta</h3><p>Organizando os detalhes e aprimorando o texto...</p>
+          <div class="skeleton wide"></div><div class="skeleton"></div><div class="skeleton short"></div>
+        </div>
+        <article id="quotePreview" class="quote-preview" hidden>
+          <div class="quote-brand"><span class="mini-mark">O+</span><div><b>PROPOSTA DE ORÇAMENTO</b><small>PROPOSTA COMERCIAL</small></div><span class="quote-status">PREPARADA</span></div>
+          <div id="quoteText" class="quote-text"></div>
+          <div class="quote-bottom"><span>Obrigado pela oportunidade!</span><span>ORÇAPRO IA</span></div>
+        </article>
+        <div id="actions" class="action-grid" hidden>
+          <button id="whatsappBtn" class="button button-primary" type="button">◉ Enviar pelo WhatsApp</button>
+          <button id="pdfBtn" class="button button-secondary" type="button">↓ Baixar PDF</button>
+          <button id="copyBtn" class="button button-ghost copy-button" type="button">▢ Copiar texto</button>
+          <button id="editBtn" class="button button-ghost" type="button">↻ Editar dados</button>
+        </div>
+        <p class="disclaimer">Revise valores, prazos e condições antes de enviar ao cliente.</p>
+      </div>
+    </section>
+    <footer><span>© <span id="year"></span> OrçaPro IA</span><span>Feito para valorizar o seu trabalho <b>◆</b></span></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js" defer></script>
+  <script src="/app.js" defer></script>
+</body>
+</html>

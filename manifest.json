@@ -1,0 +1,26 @@
+{
+  "id": "/",
+  "name": "OrçaPro IA — Gerador de Orçamentos",
+  "short_name": "OrçaPro IA",
+  "description": "Crie propostas e orçamentos profissionais com ajuda da IA.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0e0c",
+  "theme_color": "#101512",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
